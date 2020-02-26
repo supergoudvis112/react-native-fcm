@@ -396,9 +396,11 @@ RCT_EXPORT_METHOD(getAPNSToken:(RCTPromiseResolveBlock)resolve rejecter:(RCTProm
     NSData * deviceToken = [FIRMessaging messaging].APNSToken;
     const char *data = [deviceToken bytes];
     NSMutableString *token = [NSMutableString string];
+
     for (NSUInteger i = 0; i < [deviceToken length]; i++) {
         [token appendFormat:@"%02.2hhX", data[i]];
     }
+  
     resolve([token copy]);
 }
 
